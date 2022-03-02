@@ -5,6 +5,7 @@ import os
 ROUTER_IP = "172.30.1.254/24"
 
 def main():
+    print("ip스캔중...")
     ip_linux = os.popen(f"nmap -sn {ROUTER_IP}").read()
     ip_list=[]
     mac_list=[]
@@ -25,9 +26,15 @@ def main():
                 location = i.find("ether   ")
                 if location!=-1:
                     mac=i[location+8:location+25]
-                    print(mac)
                     mac_list.append(mac)
 
+    
+    for m in mac_list:
+        print(m)
+
+    db_mac = ','.join(map(str,mac_list))
+    print(db_mac)
+    
 
 
 
