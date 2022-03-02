@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'iot_home',
 ]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -76,12 +79,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
 'default': {
-'ENGINE': 'django.db.backends.mysql',
-'NAME': 'iot',
-'USER': 'iot',
-'PASSWORD': 'iot', # iot 사용자의 비밀번호 입력
-'HOST': 'localhost', # 데이터베이스의 서버 주소
-'PORT': '3306' # 데이터베이스의 포트번호, 생략시 디폴트 포트번호
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': 'iot',
+    'USER': 'iot',
+    'PASSWORD': 'iot', # iot 사용자의 비밀번호 입력
+    'HOST': 'localhost', # 데이터베이스의 서버 주소
+    'PORT': '3306' # 데이터베이스의 포트번호, 생략시 디폴트 포트번호
 }
 }
 
@@ -108,9 +111,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
