@@ -1,10 +1,15 @@
-from ipaddress import ip_address
+import pymysql
 import os
+import time
+import datetime
+
 
 
 ROUTER_IP = "172.30.1.254/24"
+i=300
 
-def main():
+
+def mac_scan():
     print("ip스캔중...")
     ip_linux = os.popen(f"nmap -sn {ROUTER_IP}").read()
     ip_list=[]
@@ -29,14 +34,37 @@ def main():
                     mac_list.append(mac)
 
     
-    for m in mac_list:
-        print(m)
+    # for m in mac_list:
+    #     print(m)
 
     db_mac = ','.join(map(str,mac_list))
     print(db_mac)
-    
+
+    return db_mac
 
 
+
+def main():
+    i=300
+    conn = pymysql.connect(host='localhost', user='iot', password='iot', db='iot', charset='utf8')
+    cur = conn.cursor()
+
+    while(1):
+        if i==300:
+            i=0
+            db_mac = mac_scan()
+            now = datetime.datetime.now()
+            date = f'{now}'
+
+            sql =f"""
+                insert into iot_home_macaddress(mac_data,date) values
+                ('{db_mac}','{now}');
+                """
+            cur.execute(sql)
+            conn.commit()
+            print("db저장")
+        i+=1
+        time.sleep(1)
 
 
 main()
