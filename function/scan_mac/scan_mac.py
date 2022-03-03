@@ -4,9 +4,10 @@ import time
 import datetime
 
 
-
+file = "../../temp/request"
 ROUTER_IP = "172.30.1.254/24"
-i=300
+scantime=3600
+i=scantime
 
 
 def mac_scan():
@@ -40,17 +41,29 @@ def mac_scan():
     db_mac = ','.join(map(str,mac_list))
     print(db_mac)
 
+
     return db_mac
+
+def check_request():
+    if os.path.isfile(file):
+        time.sleep(5)
+        try:
+            os.remove(file)
+        except:
+            pass
+        return 1
+    else:
+        return 0
 
 
 
 def main():
-    i=300
+    i=scantime
     conn = pymysql.connect(host='localhost', user='iot', password='iot', db='iot', charset='utf8')
     cur = conn.cursor()
 
     while(1):
-        if i==300:
+        if i==scantime:
             i=0
             db_mac = mac_scan()
             now = datetime.datetime.now()
@@ -64,6 +77,9 @@ def main():
             conn.commit()
             print("db저장")
         i+=1
+        if(check_request()==1):
+            i=scantime
+
         time.sleep(1)
 
 

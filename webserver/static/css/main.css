@@ -1,0 +1,22 @@
+.main{
+    margin : 5vw 15vw;
+    word-break:break-all;
+    
+}
+
+.name{
+    font-size: 10vw;
+    text-align : center;
+}
+.title{
+    font-size : 7vw;
+}
+
+
+.data{
+    font-size: 8vw;
+}
+.scan{
+    margin-top : 5vw;
+    font-size: 4vw;
+}

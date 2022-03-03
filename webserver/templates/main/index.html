@@ -1,5 +1,50 @@
 {% extends "base.html" %} {% block content %}
 {% load static %}
-    <link href="{% static 'css/styles.css'%}" rel="stylesheet" />
-    <div>hello world</div>
+    <link href="{% static 'css/main.css'%}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+    <div class = "main">
+        <div class = "name">
+            My House<br>
+            Information
+        </div>
+        <div class="body">
+
+            {% if dht %}
+                <div class="scan">
+                    측정시간 : {{dht.date}}
+                </div>
+                <div class ="title">
+                    [온습도]
+                </div>
+                <div class = "data">
+                    온도 : {{dht.temperature}}ºC<br>
+                    습도 : {{dht.humidity}}%<br>
+                </div>
+            {% endif %}
+            
+            {% if mac %}  
+                <div class="scan">
+                    측정시간 : {{mac_time}}</br>
+                </div>
+                <div class ="title">
+                    [집에 있는 사람]
+                </div>
+                <div class = "data">
+                {% for m in mac %}
+            
+                {{m}}, 
+        
+                {% endfor %}
+                </div>
+            {% endif %}
+
+        </div>
+        
+    </div>
+   
+    
+
+
+
+
 {% endblock %}
