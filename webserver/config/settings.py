@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-^-r_t$4wvo-0vs*ek32sv$6irt)osx)^z*3kyjs2=!r7zj7*pa
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost','172.30.1.18','175.211.162.37','campinggo.tk','iot1-campinglog.tk']
+ALLOWED_HOSTS = ['127.0.0.1','localhost','172.30.1.18','175.211.162.37','home5477.tk',]
 
 
 # Application definition
