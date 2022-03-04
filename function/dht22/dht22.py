@@ -8,7 +8,7 @@ import os
 conn = pymysql.connect(host='localhost', user='iot', password='iot', db='iot', charset='utf8')
 cur = conn.cursor()
 file = "../../temp/request"
-scantime=3600
+scantime=600
 i=scantime
 
 def check_request():

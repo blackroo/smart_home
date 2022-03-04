@@ -6,7 +6,7 @@ import datetime
 
 file = "../../temp/request"
 ROUTER_IP = "172.30.1.254/24"
-scantime=3600
+scantime=600
 i=scantime
 
 
