@@ -1,22 +1,99 @@
+.background{
+    background-color:cornsilk;
+}
+
 .main{
     margin : 5vw 15vw;
     word-break:break-all;
     
 }
 
+.body{
+    margin-top : 15vw;
+}
+
 .name{
     font-size: 10vw;
     text-align : center;
+    background-color: yellow;
+    border-radius: 3vw;
+    padding: 1vw 1vw;
+    font-weight: 900;
 }
 .title{
     font-size : 7vw;
+    background-color: aqua;
+    border-radius: 3vw;
+    padding: 1vw 1vw;
+    font-weight: 900;
+    display: inline;
 }
 
+.menu{
+    margin-top:4vw;
+}
+
+.icon_box_left{
+    width: 32vw;
+    height: 43vw;
+    display: inline-block;
+
+}
+
+.icon_box_right{
+    width: 32vw;
+    height: 43vw;
+    float: right;
+}
+
+.icon{
+    width: 100%;
+}
+.icon_text{
+    font-size : 4vw;
+    color : black;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10vw;
+    padding: 1vw 1vw;
+    text-align:center;
+    font-weight: 900;
+    margin-top: 2vw;
+}
 
 .data{
     font-size: 8vw;
 }
 .scan{
-    margin-top : 5vw;
-    font-size: 4vw;
+    margin-top: 2vw;
+    font-size: 3vw;
+}
+
+.error{
+    font-size: 5vw;
+}
+
+.button{
+    font-size: 5vw;
+    padding: 1vw 2vw;
+    font-weight: 900;
+    background-color: lightblue;
+    color:black;
+    transition: 0.3s;
+    border-radius: 3vw;
+    float: right;
+    margin-right :15vw;
+}
+.search-text{
+    width: 40vw;
+    height: 10vw;
+    margin-right: 3vw;
+  }
+
+.codeinput{
+    background-color: lightblue;
+    color:black;
+    border-radius: 3vw;
+    float: right;
+    padding: 1vw 2vw;
+    font-size: 5vw;
 }

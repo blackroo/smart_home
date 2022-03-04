@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% block content %}
+{% load static %}
+    <link href="{% static 'css/main.css'%}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+    
+    <button onclick="history.back()" class="button">뒤로가기</button>
+    
+    <div class = "main">
+        <div class="body">
+
+            <div class = "title">
+                온습도
+            </div>
+        {% if dht %}
+            <div class = "data">
+                온도 : {{dht.temperature}}ºC<br>
+                습도 : {{dht.humidity}}%<br>
+            </div>
+            <div class="scan">
+                * 측정시간 : {{dht.date}}
+            </div>
+        {% else %}
+            <div class = "error">
+                저장된 데이터가 없습니다.
+            </div>
+        {% endif %}
+
+  
+        
+
+
+
+        </div>
+    </div>
+
+{% endblock %}

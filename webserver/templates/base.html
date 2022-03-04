@@ -14,8 +14,8 @@
     />
     <title>smart-home</title>
   </head>
-  <body>
-    {% block content %}{% endblock %}
+  <body class="background">
+    {% include "navbar.html" %}{% block content %}{% endblock %}
     <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     {% block script %}{% endblock %}

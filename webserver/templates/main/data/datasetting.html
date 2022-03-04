@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block content %}
+{% load static %}
+    <link href="{% static 'css/main.css'%}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+ 
+    <div class = "main">
+        <div class = "menu">
+            <div class = "icon_box_left">
+                <a href="{% url 'iot:request' %}" >
+                    <img src="{% static 'images/information.png'%}"  class = "icon">    
+                    <div class="icon_text">
+                        데이터 요청
+                    </div>
+                </a>
+            </div>
+
+            <div class = "icon_box_right">
+                <a href="{% url 'iot:datacode' %}">
+                    <img src="{% static 'images/data_delete.png'%}"  class = "icon">
+                    <div class="icon_text">
+                        데이터 삭제
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <button onclick="history.back()" class="button">뒤로가기</button>
+{% endblock %}

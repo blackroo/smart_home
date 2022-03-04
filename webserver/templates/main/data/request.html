@@ -3,6 +3,13 @@
     <link href="{% static 'css/main.css'%}" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
 
-    {{txt}}
+    <button onclick="history.back()" class="button">뒤로가기</button>
+    <br>
+    <div class = "main">
+        <div class = "error">
+            {{txt}}<br>
+            {{txt2}}
+        </div>
+    </div>
 
 {% endblock %}
