@@ -11,6 +11,7 @@ void type_check(char message[],int clnt_sock)
 	char Command[64]={0x00,};
 	int location_num=0;
 	FILE *file;
+	int time=160;
 	
 	if(message[1]==arduino_request)
 	{
@@ -25,19 +26,25 @@ void type_check(char message[],int clnt_sock)
 	{
 		while(1)
 		{
-			sprintf(filename,"%s/%d_light_on",temp_location,location_num);
+			sprintf(filename,"%s/%d_dustsensor",temp_location,location_num);
 			
 			if (file = fopen(filename, "r")) 
 		    {
 		        fclose(file);
-		        printf("file exists\n");
 				sprintf(Command,"sudo rm %s",filename);
 				system(Command);
-				switch_on(clnt_sock);
+				dust_request(clnt_sock);
+				time=0;
 				sleep(1);
 		    }
+			else if(time>=180)
+			{
+				dust_request(clnt_sock);
+				time=0;
+			}
 		    else
 		    {
+		    	time++;
 				sleep(1);
 		    }
 		}
@@ -50,9 +57,58 @@ void init_response(int clnt_sock)
 	write(clnt_sock, message, strlen(message));
 }
 
-void switch_on(int clnt_sock)
+void dust_request(int clnt_sock)
 {
-	char * message = "switch on";
+	char filename[64]={0x00,};
+	char command[64]={0x00,};
+	char buffer[64]={0x00,};
+	char * message = "Dust sensor";
+
+	FILE *fp;
+
+
+	time_t t = time(NULL);
+	struct tm tm = *localtime(&t);
+
+
+
+	
 	write(clnt_sock, message, strlen(message));
+
+	sprintf(filename,"%s/dust_request",temp_location);
+	sprintf(command,"sudo touch %s",filename);
+	system(command);
+	
+	
+	while(read(clnt_sock, buffer, 64)<=0);
+
+	memset(command,0,64);
+	sprintf(command,"sudo rm %s",filename);
+	system(command);
+
+	memset(command,0,64);
+	sprintf(command,"%s/dust_value",temp_location);
+
+	if((fp = fopen(command, "w"))!=NULL)
+	{
+		memset(command,0,64);
+		sprintf(command,"time[%d-%d-%d %d:%d:%d]\n",tm.tm_year+1900, tm.tm_mon+1, tm.tm_mday,
+         tm.tm_hour, tm.tm_min, tm.tm_sec);
+		fputs(command, fp);
+		
+		memset(command,0,64);
+		sprintf(command,"dust[%.2f]\n",atof(buffer));
+		fputs(command, fp);
+		
+		fclose(fp);
+	}
+
+	printf("time[%d-%d-%d %d:%d:%d]\n",
+         tm.tm_year+1900, tm.tm_mon+1, tm.tm_mday,
+         tm.tm_hour, tm.tm_min, tm.tm_sec);
+
+	printf("dust[%.2f]\n", atof(buffer));
+	
+
 }
 

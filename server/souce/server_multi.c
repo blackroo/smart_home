@@ -149,8 +149,11 @@ void z_handler(int sig)
 	int rtn;
 
 	pid=waitpid(-1,&rtn,WNOHANG);
-	printf("dead prossecc ID : %d \n",pid);
-	printf("return data : %d \n\n",WEXITSTATUS(rtn));
+	if(pid!=-1)
+	{
+		printf("dead prossecc ID : %d \n",pid);
+		printf("return data : %d \n\n",WEXITSTATUS(rtn));
+	}
 }
 
 void error_handling(char * message)
