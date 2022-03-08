@@ -13,6 +13,7 @@
 #define PORT 5000
 
 
+
 void error_handling(char *message);
 void z_handler(int sig);
 
@@ -47,7 +48,7 @@ int compare_data(int clnt_sock)
 	while((str_len=read(clnt_sock, message, BUFSIZE)) !=0)
 	{
 
-		if(message[0]!=0x01)
+		if(message[0]!=socket_client)
 		{
 			continue;
 		}
@@ -60,11 +61,11 @@ int compare_data(int clnt_sock)
 
 
 		debugHexDump("recv_data", (unsigned char*)message, (int)strlen(message));
+
+		//
 		
-		if(message[1]==arduino_request || message[1]==arduino_response)
-		{
-			type_check(message,clnt_sock);
-		}
+		type_check(message,clnt_sock);
+		
 		//init_packet(clnt_sock,message);
 		//write(clnt_sock, message, str_len);
 		//write(1,message, str_len);

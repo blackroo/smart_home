@@ -10,8 +10,8 @@
 
 
 void type_check(char message[],int clnt_sock);
-void init_response(int clnt_sock);
-void dust_request(int clnt_sock);
+void init_response(char buffer[],int clnt_sock);
+
 
 
 

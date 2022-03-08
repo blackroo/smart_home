@@ -9,16 +9,19 @@ int check_sum(char data[]);
 
 
 
-enum command
+enum socket_type
 {
-	init_command = 0x01,
+    socket_client = 0x01,
+    socket_server = 0x02,
 };
 
-enum type
+enum location
 {
-	arduino_request = 0x21,
-    arduino_response = 0x22,
+	init = 0x20,
+    my_room=0x11,
 };
+
+
 
 enum function_type
 {
