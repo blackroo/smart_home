@@ -1,21 +1,8 @@
 
 #include<stdio.h>
 #include<stdlib.h>
-#include<string.h>
-#include<unistd.h>
-#include<signal.h>
-#include<arpa/inet.h>
-#include<sys/types.h>
-#include<sys/wait.h>
-#include<sys/socket.h>
-#include"compare.h"
 
-#define PORT 5000
-
-
-
-void error_handling(char *message);
-void z_handler(int sig);
+#include "server_multi.h"
 
 int tcp_server_create()
 {
@@ -86,8 +73,8 @@ int main(int argc, char **argv)
 
 	struct sigaction act;
 	int addr_size, state;
-	pid_t pid;
 	
+	pid_t pid;
 
 	//핸들러 설정
 	act.sa_handler=z_handler;

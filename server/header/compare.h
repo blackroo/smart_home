@@ -1,7 +1,7 @@
 
 #include "arduino_packet.h"
 
-#define BUFSIZE 512
+#define BUFSIZE 128
 
 int debugHexDump(const char * title, unsigned char * addr, int len);
 void init_packet(int sock, char data[]);
@@ -15,19 +15,17 @@ enum socket_type
     socket_server = 0x02,
 };
 
-enum location
+enum function_type
 {
 	init = 0x20,
-    my_room=0x11,
+    senser_period = 0x21,
 };
 
 
 
-enum function_type
+enum location
 {
-    arduino_connect = 0x21,
-    arduino_light_switch = 0x22,
-    arduino_senser = 0x23,
+    my_room=0x11,
 };
 
 
